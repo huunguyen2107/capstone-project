@@ -5,14 +5,14 @@
 
 # Step 1:
 # Create dockerpath
-dockerpath="nhathuu2107/ml-classification"
+dockerpath="nhathuu2107/app"
 
 
 # Step 2:
 # Authenticate & tag
 echo "Docker ID and Image: $dockerpath"
 # docker login --username nhathuu2107
-docker image tag ml-classification $dockerpath
+docker image tag app $dockerpath
 
 # Step 3:
 # Push image to a docker repository
