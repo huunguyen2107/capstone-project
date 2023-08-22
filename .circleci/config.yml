@@ -36,7 +36,7 @@ jobs:
           command: |
             . venv/bin/activate
             make lint
-  build:
+  build-deploy:
     docker:
       - image: cimg/python:3.11.4
     parameters:
@@ -119,7 +119,7 @@ workflows:
   build-deploy:
     jobs:
       - lint
-      - build:
+      - build-deploy:
           cluster-name: CapstoneEKS-1joyeLRkwKJ7	
           aws-region: $AWS_DEFAULT_REGION
           filters:
