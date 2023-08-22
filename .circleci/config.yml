@@ -76,28 +76,28 @@ jobs:
           name: Load Docker image layer cache
           command: |
             set +o pipefail
-            docker load -i caches/app.tar | true
+            docker load -i caches/ml-classification.tar | true
       - run:
           name: Build application Docker image
-          command: docker build --cache-from=app -t app .
+          command: docker build --cache-from=ml-classification -t ml-classification .
       - run:
           name: Save Docker image layer cache
           command: |
             chmod -R 777 ../
             mkdir -p caches
-            docker save -o caches/app.tar app
+            docker save -o caches/ml-classification.tar ml-classification
       - run:
           name: Push Docker Image
           command: |
-            docker tag app nhathuu2107/app
-            docker push nhathuu2107/app
+            docker tag ml-classification nhathuu2107/ml-classification
+            docker push nhathuu2107/ml-classification
       - aws-eks/update-kubeconfig-with-authenticator:
           cluster-name: << parameters.cluster-name >>
           aws-region: << parameters.aws-region >>
           install-kubectl: true
       - kubernetes/create-or-update-resource:
           resource-file-path: ./kubernetes/deployment.yml
-          resource-name: deployment/app
+          resource-name: deployment/ml-classification
           get-rollout-status: true
           show-kubectl-command: true
       - kubernetes/create-or-update-resource:
