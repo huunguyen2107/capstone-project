@@ -15,7 +15,6 @@ In this project you will apply the skills and knowledge which were developed thr
 
 To run this project, you will need to add the following environment variables to your CircleCI environment variables
 
-* `AWS_DEFAULT_REGION`
 * `AWS_ACCESS_KEY_ID`
 * `AWS_SECRET_ACCESS_KEY`
 * `AWS_DEFAULT_REGION`
